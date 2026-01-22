@@ -1,5 +1,8 @@
 import * as THREE from "three";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger"; // ScrollTrigger ইম্পোর্ট করা হলো
+
+gsap.registerPlugin(ScrollTrigger); // ScrollTrigger রেজিস্টার করা হলো
 
 export function setCharTimeline(
   character: THREE.Object3D<THREE.Object3DEventMap> | null,
@@ -9,6 +12,7 @@ export function setCharTimeline(
   setInterval(() => {
     intensity = Math.random();
   }, 200);
+  
   const tl1 = gsap.timeline({
     scrollTrigger: {
       trigger: ".landing-section",
@@ -18,6 +22,7 @@ export function setCharTimeline(
       invalidateOnRefresh: true,
     },
   });
+  
   const tl2 = gsap.timeline({
     scrollTrigger: {
       trigger: ".about-section",
@@ -27,6 +32,7 @@ export function setCharTimeline(
       invalidateOnRefresh: true,
     },
   });
+  
   const tl3 = gsap.timeline({
     scrollTrigger: {
       trigger: ".whatIDO",
@@ -36,6 +42,7 @@ export function setCharTimeline(
       invalidateOnRefresh: true,
     },
   });
+
   let screenLight: any, monitor: any;
   character?.children.forEach((object: any) => {
     if (object.name === "Plane004") {
@@ -60,6 +67,7 @@ export function setCharTimeline(
       screenLight = object;
     }
   });
+
   let neckBone = character?.getObjectByName("spine005");
   if (window.innerWidth > 1024) {
     if (character) {

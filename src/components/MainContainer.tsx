@@ -34,23 +34,23 @@ const MainContainer = ({ children }: PropsWithChildren) => {
       <Cursor />
       <Navbar />
       <SocialIcons />
+      
+      {/* ডেস্কটপ ভিউতে 3D মডেল দেখানো */}
       {isDesktopView && children}
-      <div id="smooth-wrapper">
-        <div id="smooth-content">
-          <div className="container-main">
-            <Landing>{!isDesktopView && children}</Landing>
-            <About />
-            <WhatIDo />
-            <Career />
-            <Work />
-            {isDesktopView && (
-              <Suspense fallback={<div>Loading....</div>}>
-                <TechStack />
-              </Suspense>
-            )}
-            <Contact />
-          </div>
-        </div>
+
+      {/* Smooth Wrapper বাদ দেওয়া হয়েছে সাধারণ স্ক্রলিং এর জন্য */}
+      <div className="content-container">
+          <Landing>{!isDesktopView && children}</Landing>
+          <About />
+          <WhatIDo />
+          <Career />
+          <Work />
+          {isDesktopView && (
+            <Suspense fallback={<div>Loading....</div>}>
+              <TechStack />
+            </Suspense>
+          )}
+          <Contact />
       </div>
     </div>
   );
