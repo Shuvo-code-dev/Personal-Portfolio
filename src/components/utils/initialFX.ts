@@ -74,6 +74,7 @@ export function initialFX() {
 }
 
 // লুপ টেক্সট ফাংশন (SplitText ছাড়া)
+// লুপ টেক্সট ফাংশন (নিচে এই নতুন কোডটি বসাও)
 function LoopText(selectorOne: string, selectorTwo: string) {
   const el1 = document.querySelector(selectorOne);
   const el2 = document.querySelector(selectorTwo);
@@ -82,7 +83,7 @@ function LoopText(selectorOne: string, selectorTwo: string) {
 
   var tl = gsap.timeline({ repeat: -1, repeatDelay: 1 });
   const delay = 4;
-  const delay2 = delay * 2 + 1;
+  // const delay2 = delay * 2 + 1; <--- এই লাইনটি সমস্যার কারণ ছিল, এটি বাদ দেওয়া হয়েছে।
 
   // প্রাথমিক অবস্থা সেট করা
   gsap.set(el2, { opacity: 0, y: 50 });
@@ -106,7 +107,7 @@ function LoopText(selectorOne: string, selectorTwo: string) {
       opacity: 0,
       duration: 1.2,
       ease: "power3.inOut",
-      delay: delay, // Wait before hiding second text
+      delay: delay, 
     }, ">")
     .to(el1, {
       y: 0,
